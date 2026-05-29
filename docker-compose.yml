@@ -3,5 +3,6 @@ services:
     image: floci/floci
     ports:
       - "4566:4566"
+      - "9169:9169"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
