@@ -79,3 +79,33 @@ PK = USER#1
 SK = ORDER#1001
 SK = ORDER#1002
 ```
+
+## Useful commands
+
+`aws dynamodb list` See the list of tables
+
+`aws dynamodb scan --table-name AppTable | jq` See table data
+
+`aws dynamodb delete-table --table-name AppTable` Delete table
+
+## PITR (Point-in-Time Recovery) Backups
+
+```bash
+# Enable PiTR
+aws dynamodb update-continuous-backups \
+    --table-name AppTable \
+    --point-in-time-recovery-specification PointInTimeRecoveryEnabled=true
+```
+
+```bash
+# Describe the Backup
+aws dynamodb describe-continuous-backups \
+    --table-name AppTable
+```
+
+```bash
+# Restore Backup
+aws dynamodb restore-table-from-backup \
+    --target-table-name AppTable-Restore \
+    --backup-arn arn:aws:dynamodb:region:account-id:table/AppTable/backup/...
+```
