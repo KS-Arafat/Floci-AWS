@@ -5,3 +5,4 @@ package-lock.json
 .venv
 *.tmp
 key-pair/
+__pycache__
