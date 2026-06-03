@@ -1,0 +1,39 @@
+import boto3
+from mypy_boto3_sqs import SQSClient
+import json
+import time
+
+sqs: SQSClient = boto3.client(
+    "sqs",
+    region_name="us-east-1",
+    aws_access_key_id="test",
+    aws_secret_access_key="test",
+)
+
+SQS_QUEUE_URL = "http://localhost:4566/000000000000/my-event-sqs"
+
+
+def Event_Queue():
+
+    print("Waiting for Events...")
+    while True:
+
+        response = sqs.receive_message(
+            QueueUrl=SQS_QUEUE_URL, MaxNumberOfMessages=3, WaitTimeSeconds=2
+        )
+
+        msgs = response.get("Messages", [])
+        for msg in msgs:
+            body = json.loads((msg["Body"]))
+            product_detail = body.get("detail", {})
+            print("Processed Message: ", product_detail)
+            sqs.delete_message(
+                QueueUrl=SQS_QUEUE_URL, ReceiptHandle=msg["ReceiptHandle"]
+            )
+        time.sleep(2)
+
+
+try:
+    Event_Queue()
+except KeyboardInterrupt:
+    print("\nExiting...")

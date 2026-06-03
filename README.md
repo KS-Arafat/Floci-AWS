@@ -52,6 +52,9 @@ Repository layout
   - [SNS-SQS/tsSNQS/index.ts](SNS-SQS/tsSNQS/index.ts#L1) (TypeScript)
   - [SNS-SQS/pySNQS/main.py](SNS-SQS/pySNQS/main.py#L1) (Python)
 
+- **EventBridge/** — EventBridge examples using EventBridge rules and SQS targets.
+  - [EventBridge/Event-SQS/main.py](EventBridge/Event-SQS/main.py#L1) (Python)
+
 - **ECS/**, **EKS/**, **ElasticCache/**, **RDS/**, **Terraform/** — placeholders and workspace folders for related experiments and infra code.
 
 How to use
