@@ -1,0 +1,30 @@
+{
+    "CallerReference": "ref-1",
+    "Enabled": true,
+    "Comment": "my distribution",
+    "Origins": {
+        "Quantity": 1,
+        "Items": [
+            {
+                "Id": "my-origin",
+                "DomainName": "my-site.s3.amazonaws.com",
+                "S3OriginConfig": {
+                    "OriginAccessIdentity": ""
+                }
+            }
+        ]
+    },
+    "DefaultCacheBehavior": {
+        "TargetOriginId": "my-origin",
+        "ViewerProtocolPolicy": "redirect-to-https",
+        "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+        "AllowedMethods": {
+            "Quantity": 2,
+            "Items": [
+                "GET",
+                "HEAD"
+            ]
+        },
+        "Compress": true
+    }
+}

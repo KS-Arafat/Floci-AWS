@@ -1,4 +1,6 @@
 [tools]
 node = "latest"
+"npm:aws-cdk" = "latest"
+"npm:aws-cdk-local" = "latest"
 pnpm = "latest"
 uv = "latest"

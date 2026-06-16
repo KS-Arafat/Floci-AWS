@@ -1,0 +1,15 @@
+@restApiId = e6f7cef0e0
+
+POST http://localhost:4566/restapis/{{restApiId}}/prod/_user_request_/upload
+Content-Type: application/json
+
+{
+  "filename": "hello22.txt",
+  "contentType": "text/plain",
+  "file": "WW91IGhhdmUgdG8gdHVybiB0ZXh0IHRvIGJhc2U2NCBiZWZvcmUgUzMK"
+}
+
+###
+
+GET http://localhost:4566/restapis/{{restApiId}}/prod/_user_request_/download
+
